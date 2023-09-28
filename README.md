@@ -18,8 +18,8 @@ abstract class Animal<C extends string | string[]> {
 ```
 
 # What are function declaration(definition) and expression?
-Expression is similar to a function declaration without the function name.
-Function declaration does not require a variable assignment and are executed before any other code - hoisting
+- Expression is similar to a function declaration without the function name.
+- Function declaration does not require a variable assignment and are executed before any other code - hoisting
 
 # What is a typeof operator?
 ```
@@ -34,7 +34,13 @@ null is also considered an object
 ```
 
 # What is IIFE - imidiatly invoked function expression?
-()() IIFE - imidiatly invoked function expression
+()() - means that a function will be called just after initialization\
+
+```
+(function () {
+  // …
+})();
+```
 
 # What is a static keyword?
 When we use the static keyword on properties we define on a class, they belong to the class itself.
@@ -56,15 +62,14 @@ goo.NUM_VINYL_CREATED // Error
 protected access modifier is similar to the private access modifier, except that protected members can be accessed using their deriving classes (keyword extends).
 
 # Describe variable scope.
-Variables defined with let and const are hoisted to the top of the block, but not initialized.
-var is hoisted. Their initial value is undefined
-Since when the let expression is used, every iteration creates a new lexical scope chained up to the previous scope. Deeply-nested scopes may be the reason for lower performance in this case.
-var: function scoped
-let, const: block scoped
+Variables defined with let and const are hoisted to the top of the block, but not initialized./
+var is hoisted. Their initial value is undefined/
+Since when the let expression is used, every iteration creates a new lexical scope chained up to the previous scope. /Deeply-nested scopes may be the reason for lower performance in this case./
+- var: function scoped
+- let, const: block scoped
 
 # Describe a closure.
-closure - a variable stores in heap memory instead of call stack
-it's available inside the scope and inner scopes, but unavilable outside.
+closure - a variable stores in heap memory instead of call stack. it's available inside the scope and inner scopes, but unavilable outside.
 
 ```
 function getDate () {
@@ -76,10 +81,10 @@ console.log(date) // ERROR
 ```
 
 # Describe a Unit testing, give a example.
-Unit testing is a software development process in which the smallest testable parts of an application, called units
-beforeEach method is a feature that you can use to set preconditions for each test
-fixture is a wrapper for a component and its template
-TestBed is a mock environment to run tests (kind of API)
+Unit testing is a software development process in which the smallest testable parts of an application, called units.
+beforeEach method is a feature that you can use to set preconditions for each test.
+fixture is a wrapper for a component and its template.
+TestBed is a mock environment to run tests (kind of API).
 
 ```
 fixture = TestBed.createComponent(QuotesComponent);
@@ -94,10 +99,10 @@ element = fixture.nativeElement.query(By.css('p'));
 debugElement abstraction to work safely across all supported platforms.
 ```
 
-toBe - primitives
-toEqual - object
-toMatch - string
-toContain - array
+toBe - primitives/
+toEqual - object/
+toMatch - string/
+toContain - array/
 you can write a method on a component and can access this method in the test block
 
 ```
@@ -115,20 +120,21 @@ providers: [{ provide: UserService, useClass: UserService}]
 a separate class that will be able to implement the methods in a different way
 
 # What is a difference between JIT and AOT?
-Just-in-Time (JIT) compiles in the browser at runtime.
-Ahead-of-Time (AOT) compiles app at build time.
+- Just-in-Time (JIT) compiles in the browser at runtime.
+- Ahead-of-Time (AOT) compiles app at build time./
 AOT significantly reduces the bootstrapping time of the app, it is smaller and security is increased, but take more time to compile
 
 # What is a factory function?
 A factory function can be defined as a function that creates an object and returns it. It is similar to constructor functions/class functions.
 
 # What is a DI?
-DI means passing dependent object as parameter to a method, instead a method creating a dependent object
-This method doesnt have a direct dependency on a particular implementation - we depends more on abstarction than on concrete implementation
+DI means passing dependent object as parameter to a method, instead a method creating a dependent object. This method doesnt have a direct dependency on a particular implementation - we depends more on abstarction than on concrete implementation
 
 # Describe an injection.
+```
 constructor(public engine: Engine) {}
 same as constructor(@Inject(Engine) engine:Engine)
+```
 
 for primitives:
 ```
@@ -155,45 +161,45 @@ If to forget put multi: true then it will overrides the previously registered di
 
 # Describe a Node Injector Tree.
 If the component injector can not resolve the token, Angular travels up its parents nodes.
-@SkipSelf() - Skips itself and starts with the parent component injector
-@Self() - Only looks on the current component injector
-@Optional() - Returns null instead of throwing an error if no provider is found
-@Host() - Even if there is a service instance further up the tree (from the parent), Angular wont continue looking
+- @SkipSelf() - Skips itself and starts with the parent component injector
+- @Self() - Only looks on the current component injector
+- @Optional() - Returns null instead of throwing an error if no provider is found
+- @Host() - Even if there is a service instance further up the tree (from the parent), Angular wont continue looking
 
 # What is a Tree shaking?
-Tree shaking is a way to eliminate unused modules from the final bundle file of the application.
-services in the NgModule providers array or at component level are not tree-shakable.
+Tree shaking is a way to eliminate unused modules from the final bundle file of the application. Services in the NgModule providers array or at component level are not tree-shakable.
 
 # What is a viewProviders?
-ViewProviders - All child components within ng-content dont see the provider.
+ViewProviders - All child components within ng-content dont see the provider./
 This can be used to make a service private since it s not exposed to its content children.
+```
 viewProviders: [
-{ provide: ControlContainer, useExisting: FormGroupDirective },
+  { provide: ControlContainer, useExisting: FormGroupDirective },
 ],
+```
 
 # What is a npx?
-npx. A package can be executable without installing the package. Npx is a tool that use to execute packages.
+A package can be executable without installing the package. npx is a tool that use to execute packages.
 
 # Describe how prisma works in NestJS.
-npx prisma migrate - creates tables in db according to the model
-npx prisma generate - create a ts structure
-npx prisma studio - opens a ui for admin a db
-PrismaClient is a class to connect to db and make queries
-to wire OneToMany relations among entities, you have to mark a property with @relation and and bonded fields
-on Conroller we could pass only value according to a model, using whiteList: true inside useGlobalPipes(new ValidationPipe)
+npx prisma migrate - creates tables in db according to the model/
+npx prisma generate - create a ts structure/
+npx prisma studio - opens a ui for admin a db/
+PrismaClient is a class to connect to db and make queries/
+to wire OneToMany relations among entities, you have to mark a property with @relation and and bonded fields on Conroller we could pass only value according to a model, using whiteList: true inside useGlobalPipes(new ValidationPipe)
 
 # Describe an event loop.
 The functions that finished the Web Apis execution are being moved to the Callback Queue, this is a regular queue data structure.
 Event Loop is responsible for dequeuing the next function from the Callback Queue and sending the function to the call stack to execute the function.
 To be more accurate there are actually two types of queues.
-Common Macro-Tasks are setTimeout, setInterval, and setImmediate.
-Common Micro-Task are process.nextTick and Promise callback.
+- Common Macro-Tasks are setTimeout, setInterval, and setImmediate.
+- Common Micro-Task are process.nextTick and Promise callback.
 https://medium.com/gradeup/asynchronous-javascript-event-loop-1c8de41298dd
 
 # Describe an order of execution inside event loop
 All functions that are currently in the call stack get executed and then they get popped off the call-stack.
 When the call stack is empty, all queued-up micro-tasks are popped onto the call-stack one by one and get executed, and then they get popped off the call-stack.
-When both the call-stack and micro-task queue are empty, all queued-up macro-tasks are popped onto the call-stack one by one and get executed, and then they get popped off the call-stack
+When both the call-stack and micro-task queue are empty, all queued-up macro-tasks are popped onto the call-stack one by one and get executed, and then they get popped off the call-stack.
 
 # What is a stack?
 This stack lives during the execution of the function, once the function finished its code - the stack is being removed.
@@ -201,8 +207,8 @@ Think about the heap as part of the memory, that is related to the process and n
 It means that references are stored in the stack during the function execution, and values are stored in the heap.
 
 # Describe a difference between higher order function and callback function.
-a function which takes another function as an argument or returns a function is known as a higher order function\
-callback function means just a function will be passed as an argument (and not necessary to return)
+- a function which takes another function as an argument or returns a function is known as a higher order function
+- callback function means just a function will be passed as an argument (and not necessary to return)
 
 # Describe a difference between a session and token handling?
 - session is handled on the server and token on the client, token is stored in http headers
@@ -213,13 +219,14 @@ The CORS behavior, commonly termed as CORS error, is a mechanism to restrict use
 The CORS standard works by adding new HTTP headers which allow servers to serve resources to permitted origin domains.
 Browsers support these headers and respect the restrictions they establish.
 And let's assume that a page you server from my-cool-site.com made a request to third-party-site.com.
-Normally, users browser will decline AJAX calls to any other site other than your own domain/subdomain per the Same-Origin Security Policy.
-But if the browser and the third party server supports CORS, the following things happen:
+Normally, users browser will decline AJAX calls to any other site other than your own domain/subdomain per the Same-Origin Security Policy. But if the browser and the third party server supports CORS, the following things happen:
 
+```
 Origin: https://foo.example
 Access-Control-Allow-Origin: https://foo.example
 Access-Control-Allow-Origin: \*
 also types of requests can be attached (server conf)
+```
 
 # What is an abstraction, inheritance, encapsulation, and polymorphism?
 1. abstraction - to simplyfy a usage we hide realization
@@ -271,8 +278,8 @@ A standalone component is a type of component which is not part of any Angular m
 
 # Describe a difference between a impure and pure pipe?
 Angular calls an impure pipe for each change detection cycle, independent of the change in the input fields.
-when you pass an array or object that got the content changed (but is still the same instance)
-when the pipe injects a service to get access to other values, Angular doesn't recognize if they have changed.
+- when you pass an array or object that got the content changed (but is still the same instance)
+- when the pipe injects a service to get access to other values, Angular doesn't recognize if they have changed.
 
 ```
 @Pipe({
@@ -280,8 +287,8 @@ when the pipe injects a service to get access to other values, Angular doesn't r
   pure: false/true
 })
 ```
-If pipe is pure: there will be only one instance of the pipe. The transform method will be called twice but on the same instance.
-If pipe is impure: there will be two instances of the pipe
+- If pipe is pure: there will be only one instance of the pipe. The transform method will be called twice but on the same instance.
+- If pipe is impure: there will be two instances of the pipe
 
 # How to opimize SEO?
 Angular Universal provides a server-side rendering, it loads faster and has better SEO
@@ -293,22 +300,21 @@ View encapsulation specifies if the component's template and styles
 3. None: The component's styles are propagated back to the main HTML and therefore accessible to all components on the page
 
 # Describe a NgZone.
-NgZone.onMicroTaskEmpty() is called ApplicationRef.tick() is called then - it leads to call a detectChanges() on every view
-ngZone.runOutsideAngular - runs outside zone for performance crucial code
-ngZone.run - run inside zone to make view updates
+NgZone.onMicroTaskEmpty() is called ApplicationRef.tick() is called then - it leads to call a detectChanges() on every view/
+ngZone.runOutsideAngular - runs outside zone for performance crucial code/
+ngZone.run - run inside zone to make view updates/
 there ways (requestAnimationFrame, on_property, BLACK_LISTED_EVENTS) to disable changes inside zone
 
 # Describe a ChangeDetectionStrategy.
-ChangeDetectionStrategy.Default, Angular will have no assumption on the component’s dependency and will check every component from the component tree from top to bottom every time an event triggers change detection on browser events, timers, XHRs, and promises.
-ChangeDetectionStrategy.Push - Input, events, async pipe, ChangeDetectionRef
+- ChangeDetectionStrategy.Default, Angular will have no assumption on the component’s dependency and will check every component from the component tree from top to bottom every time an event triggers change detection on browser events, timers, XHRs, and promises.
+- ChangeDetectionStrategy.Push - Input, events, async pipe, ChangeDetectionRef
 
 # Describe a function context
-bind - return a function with new context
-call, apply - call a function with new context
+- bind - return a function with new context
+- call, apply - call a function with new context
 
 # Describe a difference between em and rem?
-em depends on parent
-rem depends on root
+em depends on parent, rem depends on root
 
 # How to write a custom input?
 ```
@@ -321,13 +327,12 @@ interface ControlValueAccessor {
 ```
 
 # Describe a difference between rebase and merge.
-rebase rewrites commits (with changing a history) and put them on top of other commits (no new commit will be created)
-it moves feature commit on top of new changes from master
+rebase rewrites commits (with changing a history) and put them on top of other commits (no new commit will be created), it moves feature commit on top of new changes from master
 
 # Describe a @ViewChild.
 static:true will resolves ViewChild before any change detection is run.
-default - static:false will resolves it after every change detection run.
-read: Use it to read the different token from the queried elements.
+- default - static:false will resolves it after every change detection run.
+- read: Use it to read the different token from the queried elements.
 
 ```
 @ViewChild("sayHelloTemplate", { static: false }) tempRef: TemplateRef;
@@ -365,9 +370,9 @@ ngAfterViewInit() {
 5. ngAfterViewChecked: called after every check of a component’s view(s);
 
 # Describe a difference between flex-wrap, flex-flow and align-content.
-flex-wrap. By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property.
-flex-flow. This is a shorthand for the flex-direction and flex-wrap properties
-align-content is for multi line flexible boxes, determines the spacing between lines
+- flex-wrap. By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property.
+- flex-flow. This is a shorthand for the flex-direction and flex-wrap properties
+- align-content is for multi line flexible boxes, determines the spacing between lines
 
 # Describe types Partial, Record, Omit, Pick.
 ```
@@ -405,9 +410,7 @@ const bob: Pick<Person, 'name'> = {
 ```
 
 # What is a prototype?
-The prototype is an object that is associated with every functions and objects by default in JavaScript,
-where function's prototype property is accessible and modifiable and object's prototype property (aka attribute) is not visible.
-
+The prototype is an object that is associated with every functions and objects by default in JavaScript, where function's prototype property is accessible and modifiable and object's prototype property (aka attribute) is not visible./
 Every function includes prototype object by default.
 
 ```
