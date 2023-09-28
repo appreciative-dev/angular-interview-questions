@@ -182,11 +182,10 @@ viewProviders: [
 A package can be executable without installing the package. npx is a tool that use to execute packages.
 
 # Describe how prisma works in NestJS.
-npx prisma migrate - creates tables in db according to the model/
-npx prisma generate - create a ts structure/
-npx prisma studio - opens a ui for admin a db/
-PrismaClient is a class to connect to db and make queries/
-to wire OneToMany relations among entities, you have to mark a property with @relation and and bonded fields on Conroller we could pass only value according to a model, using whiteList: true inside useGlobalPipes(new ValidationPipe)
+- npx prisma migrate - creates tables in db according to the model
+- npx prisma generate - create a ts structure/
+- npx prisma studio - opens a ui for admin a db/
+- PrismaClient is a class to connect to db and make queries. To wire OneToMany relations among entities, you have to mark a property with @relation and and bonded fields on Conroller we could pass only value according to a model, using whiteList: true inside useGlobalPipes(new ValidationPipe)
 
 # Describe an event loop.
 The functions that finished the Web Apis execution are being moved to the Callback Queue, this is a regular queue data structure.
@@ -265,7 +264,7 @@ Angular has automatically recognized the ```<script>``` tag as unsafe and remove
 This modification in Angular is called "sanitization."
 you can make use of the DomSanitizer and use the byPassSecurityTrust..() functions to tell Angular that you trust the input value
 
-# How to prevent app to crash if a property in an object is accessed, but not defined?
+# How to prevent app from crashing if a property in an object is accessed, but not defined?
 optional chaining ``` propertyName?.propertyName ```
 
 # What is a standalone component?
@@ -300,10 +299,10 @@ View encapsulation specifies if the component's template and styles
 3. None: The component's styles are propagated back to the main HTML and therefore accessible to all components on the page
 
 # Describe a NgZone.
-NgZone.onMicroTaskEmpty() is called ApplicationRef.tick() is called then - it leads to call a detectChanges() on every view/
-ngZone.runOutsideAngular - runs outside zone for performance crucial code/
-ngZone.run - run inside zone to make view updates/
-there ways (requestAnimationFrame, on_property, BLACK_LISTED_EVENTS) to disable changes inside zone
+- NgZone.onMicroTaskEmpty() is called ApplicationRef.tick() is called then - it leads to call a detectChanges() on every view
+- ngZone.runOutsideAngular - runs outside zone for performance crucial code
+- ngZone.run - run inside zone to make view updates
+- there ways (requestAnimationFrame, on_property, BLACK_LISTED_EVENTS) to disable changes inside zone
 
 # Describe a ChangeDetectionStrategy.
 - ChangeDetectionStrategy.Default, Angular will have no assumption on the component’s dependency and will check every component from the component tree from top to bottom every time an event triggers change detection on browser events, timers, XHRs, and promises.
@@ -330,8 +329,7 @@ interface ControlValueAccessor {
 rebase rewrites commits (with changing a history) and put them on top of other commits (no new commit will be created), it moves feature commit on top of new changes from master
 
 # Describe a @ViewChild.
-static:true will resolves ViewChild before any change detection is run.
-- default - static:false will resolves it after every change detection run.
+- ``static:true`` will resolves ViewChild before any change detection is run. default - ``static: false`` will resolves it after every change detection run.
 - read: Use it to read the different token from the queried elements.
 
 ```
@@ -360,7 +358,9 @@ ngAfterViewInit() {
 ```
 
 # How to catch a false condition in *ngIf?
+```
 *ngIf="selected; then thenBlock1 else elseBlock1"
+```
 
 # Describe lifestyle hooks.
 1. ngDoCheck: This is fired each time anything that can trigger change detection has fired (e.g. click handlers, HTTP requests, route changes, etc…). This lifecycle hook is mostly used for debug purposes;
@@ -410,8 +410,7 @@ const bob: Pick<Person, 'name'> = {
 ```
 
 # What is a prototype?
-The prototype is an object that is associated with every functions and objects by default in JavaScript, where function's prototype property is accessible and modifiable and object's prototype property (aka attribute) is not visible./
-Every function includes prototype object by default.
+The prototype is an object that is associated with every functions and objects by default in JavaScript, where function's prototype property is accessible and modifiable and object's prototype property (aka attribute) is not visible. Every function includes prototype object by default.
 
 ```
 function Animal (name, energy) {
