@@ -309,6 +309,7 @@ constructor(private vref:ViewContainerRef) {}
 ngAfterViewInit() {
   this.vref.createEmbeddedView(this.sayHelloTemplate);
 }
+
 ```
 <ng-content select="header"></ng-content>
 <app-card>
