@@ -201,14 +201,12 @@ Think about the heap as part of the memory, that is related to the process and n
 It means that references are stored in the stack during the function execution, and values are stored in the heap.
 
 # Describe a difference between higher order function and callback function.
-a function which takes another function as an argument or returns a function is known as a higher order function
+a function which takes another function as an argument or returns a function is known as a higher order function\
 callback function means just a function will be passed as an argument (and not necessary to return)
 
 # Describe a difference between a session and token handling?
-session is handled on the server and token on the client
-token is stored in http headers
-stateful - just auth id and other info on the server
-token - all info is stored in token
+- session is handled on the server and token on the client, token is stored in http headers
+- stateful - just auth id and other info on the server, token - all info is stored in token
 
 # What is a CORS?
 The CORS behavior, commonly termed as CORS error, is a mechanism to restrict users from accessing shared resources.
@@ -224,20 +222,23 @@ Access-Control-Allow-Origin: \*
 also types of requests can be attached (server conf)
 
 # What is an abstraction, inheritance, encapsulation, and polymorphism?
-abstraction - to simplyfy a usage we hide realization
-inheritance - we can inherit properties and methods from a parent class (the same behavior)
-encapsulation - using public and private we can give an access to properties from outside of the class
-polymorphism - we gain the ability for different possible implementations, reusing a single piece of code multiple times
+1. abstraction - to simplyfy a usage we hide realization
+2. inheritance - we can inherit properties and methods from a parent class (the same behavior)
+3. encapsulation - using public and private we can give an access to properties from outside of the class
+4. polymorphism - we gain the ability for different possible implementations, reusing a single piece of code multiple times
 
 # Describe a SOLID
-Single Responsibility
-Open Close
-Liskov Substitution
-Interface Segregation
-Dependency Inversion
+1. Single Responsibility
+2. Open Close
+3. Liskov Substitution
+4. Interface Segregation
+5. Dependency Inversion
 
 # Describe an example of lazy loading?
-{path: ‘user’, loadChildren: () => import(‘./users/user.module’).then(m => m.UserModule)};
+
+```
+{ path: ‘user’, loadChildren: () => import(‘./users/user.module’).then(m => m.UserModule) };
+```
 
 # What is a polyfill?
 polyfill is a piece of code that implements features that are not supported by the current browser
@@ -258,7 +259,7 @@ This modification in Angular is called "sanitization."
 you can make use of the DomSanitizer and use the byPassSecurityTrust..() functions to tell Angular that you trust the input value
 
 # How to prevent app to crash if a property in an object is accessed, but not defined?
-optional chaining - '?.
+optional chaining ``` propertyName?.propertyName ```
 
 # What is a standalone component?
 A standalone component is a type of component which is not part of any Angular module
@@ -452,17 +453,17 @@ and then inside child
 ```
 
 # Describe the following.
-you cannot access any properties on values with the type unknown
-WeakMap allows to use to define a property as private
-pristine, dirty, touched
-angular + figma
-GraphQL
-https://angular.io/guide/workspace-config
-https://blog.thoughtram.io/categories/angular/
-SonarQube
-Richardson Maturity Model
-shadowDOM
-::ng-deep
+1. access any properties on values with the type unknown
+2. How WeakMap allows to use to define a property as private
+3. pristine, dirty, touched for input element
+4. integration Angular with Figma
+5. GraphQL
+6. https://angular.io/guide/workspace-config
+7. https://blog.thoughtram.io/categories/angular/
+8. SonarQube
+9. Richardson Maturity Model
+10. shadowDOM
+11. ::ng-deep
 
 # How resolve following example and others (leetcode)
 
