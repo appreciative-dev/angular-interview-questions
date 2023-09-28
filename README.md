@@ -309,10 +309,12 @@ constructor(private vref:ViewContainerRef) {}
 ngAfterViewInit() {
   this.vref.createEmbeddedView(this.sayHelloTemplate);
 }
+```
 <ng-content select="header"></ng-content>
 <app-card>
  <header><h1>Angular</h1></header>
 </app-card>
+```
 
 # How to catch a false condition in *ngIf?
 *ngIf="selected; then thenBlock1 else elseBlock1"
