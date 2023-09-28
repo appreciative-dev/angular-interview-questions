@@ -11,21 +11,27 @@ Union types are used when a value can be more than a single type. Using the | we
 Abstract classes are mainly for inheritance where other classes may derive from them.
 We cannot create an instance of an abstract class.
 
+```
 abstract class Animal<C extends string | string[]> {
   public abstract communicate(communication: C): void;
 }
+```
 
 # What are function declaration(definition) and expression?
 Expression is similar to a function declaration without the function name.
 Function declaration does not require a variable assignment and are executed before any other code - hoisting
 
 # What is a typeof operator?
+```
 const myFunction = (a, b) => a + b
 console.log(typeof myFunction); // function
+```
 
+```
 var bar = null;
 console.log(typeof bar === "object"); // logs true!
 null is also considered an object
+```
 
 # What is IIFE - imidiatly invoked function expression?
 ()() IIFE - imidiatly invoked function expression
@@ -33,6 +39,8 @@ null is also considered an object
 # What is a static keyword?
 When we use the static keyword on properties we define on a class, they belong to the class itself.
 That means that we cannot access those properties from an instance of the class.
+
+```
 class Vinyl {
   public static NUM_VINYL_CREATED: number = 0;
   constructor (title: string, artist: string, genres: Genre[]) {
@@ -42,6 +50,7 @@ class Vinyl {
 }
 let goo = new Vinyl ();
 goo.NUM_VINYL_CREATED // Error
+```
 
 # What is a protected keyword?
 protected access modifier is similar to the private access modifier, except that protected members can be accessed using their deriving classes (keyword extends).
@@ -57,12 +66,14 @@ let, const: block scoped
 closure - a variable stores in heap memory instead of call stack
 it's available inside the scope and inner scopes, but unavilable outside.
 
+```
 function getDate () {
   var date = new Date()
   return date
 }
 console.log(getDate()) // logs Time
 console.log(date) // ERROR
+```
 
 # Describe a Unit testing, give a example.
 Unit testing is a software development process in which the smallest testable parts of an application, called units
@@ -70,12 +81,18 @@ beforeEach method is a feature that you can use to set preconditions for each te
 fixture is a wrapper for a component and its template
 TestBed is a mock environment to run tests (kind of API)
 
+```
 fixture = TestBed.createComponent(QuotesComponent);
 component = fixture.componentInstance;
+```
+
 --or--
+
+```
 element = fixture.nativeElement.querySelector('p');
 element = fixture.nativeElement.query(By.css('p'));
 debugElement abstraction to work safely across all supported platforms.
+```
 
 toBe - primitives
 toEqual - object
@@ -83,11 +100,13 @@ toMatch - string
 toContain - array
 you can write a method on a component and can access this method in the test block
 
+```
 service = Testbed.inject(FakeService)
 spyOn objects simulate how fetchFromServer works
 spyOn(quoteService, "fetchQuotesFromServer").and.returnValue(
-Promise.resolve(fakedFetchedList)
+  Promise.resolve(fakedFetchedList)
 );
+```
 spyOn get 2 params: a service a a method
 when use async call you should pass a done param to 'it'
 
@@ -107,16 +126,18 @@ A factory function can be defined as a function that creates an object and retur
 DI means passing dependent object as parameter to a method, instead a method creating a dependent object
 This method doesnt have a direct dependency on a particular implementation - we depends more on abstarction than on concrete implementation
 
-# Describe a injection.
+# Describe an injection.
 constructor(public engine: Engine) {}
 same as constructor(@Inject(Engine) engine:Engine)
 
 for primitives:
+```
 export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
 providers: [{ provide: APP_CONFIG, useValue: HERO_DI_CONFIG }]
 constructor(@Inject(APP_CONFIG) config: AppConfig) {
   this.title = config.title;
 }
+```
 
 new inject from Angular 14. service = inject(SomeService). //here can be a method from inside service be opened
 you can use the inject() function in Pipes and Directives aswell
@@ -232,7 +253,7 @@ Angular has built-in support for preventing http level vulnerabilities such as a
 # What is a xss attack?
 In this instance, the interpolation mechanism in Angular will escape your input. It won't interpret the input as HTML and will display the entire input as plain text on your webpage.
 This defense mechanism in Angular is known as "contextual escaping."
-Angular has automatically recognized the <script> tag as unsafe and removed it, but has kept the <b> tag as it's potentially safe.
+Angular has automatically recognized the ```<script>``` tag as unsafe and removed it, but has kept the ```<b>``` tag as it's potentially safe.
 This modification in Angular is called "sanitization."
 you can make use of the DomSanitizer and use the byPassSecurityTrust..() functions to tell Angular that you trust the input value
 
@@ -241,19 +262,23 @@ optional chaining - '?.
 
 # What is a standalone component?
 A standalone component is a type of component which is not part of any Angular module
+```
 @Component({
-  standalone: true,
-  ...
+  standalone: true
 })
+```
 
 # Describe a difference between a impure and pure pipe?
 Angular calls an impure pipe for each change detection cycle, independent of the change in the input fields.
 when you pass an array or object that got the content changed (but is still the same instance)
 when the pipe injects a service to get access to other values, Angular doesn't recognize if they have changed.
+
+```
 @Pipe({
   name: 'somePipe',
   pure: false/true
 })
+```
 If pipe is pure: there will be only one instance of the pipe. The transform method will be called twice but on the same instance.
 If pipe is impure: there will be two instances of the pipe
 
@@ -285,12 +310,14 @@ em depends on parent
 rem depends on root
 
 # How to write a custom input?
+```
 interface ControlValueAccessor {
   writeValue(obj: any): void
   registerOnChange(fn: any): void
   registerOnTouched(fn: any): void
   setDisabledState(isDisabled: boolean)?: void
 }
+```
 
 # Describe a difference between rebase and merge.
 rebase rewrites commits (with changing a history) and put them on top of other commits (no new commit will be created)
@@ -301,14 +328,23 @@ static:true will resolves ViewChild before any change detection is run.
 default - static:false will resolves it after every change detection run.
 read: Use it to read the different token from the queried elements.
 
+```
 @ViewChild("sayHelloTemplate", { static: false }) tempRef: TemplateRef;
+```
+
+```
 <ng-template #sayHelloTemplate>
   <p> Say Hello</p>
 </ng-template>
+```
+
+```
 constructor(private vref:ViewContainerRef) {}
 ngAfterViewInit() {
   this.vref.createEmbeddedView(this.sayHelloTemplate);
 }
+```
+
 
 ```
 <ng-content select="header"></ng-content>
@@ -321,11 +357,11 @@ ngAfterViewInit() {
 *ngIf="selected; then thenBlock1 else elseBlock1"
 
 # Describe lifestyle hooks.
-ngDoCheck: This is fired each time anything that can trigger change detection has fired (e.g. click handlers, HTTP requests, route changes, etc…). This lifecycle hook is mostly used for debug purposes;
-ngAfterContentInit: called after external content has been projected into the component. Remember content queries like @ContentChildren and @ContentChild are set before the hook callback is called;
-ngAfterContentChecked: called after every check of component content;
-ngAfterViewInit: called after component’s view(s) are initialized. Perfect for initializing event third party library, that needs the view be composed before taking any action (note that a view differs from content because a components view is the non-projected template);
-ngAfterViewChecked: called after every check of a component’s view(s);
+1. ngDoCheck: This is fired each time anything that can trigger change detection has fired (e.g. click handlers, HTTP requests, route changes, etc…). This lifecycle hook is mostly used for debug purposes;
+2. ngAfterContentInit: called after external content has been projected into the component. Remember content queries like @ContentChildren and @ContentChild are set before the hook callback is called;
+3. ngAfterContentChecked: called after every check of component content;
+4. ngAfterViewInit: called after component’s view(s) are initialized. Perfect for initializing event third party library, that needs the view be composed before taking any action (note that a view differs from content because a components view is the non-projected template);
+5. ngAfterViewChecked: called after every check of a component’s view(s);
 
 # Describe a difference between flex-wrap, flex-flow and align-content.
 flex-wrap. By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property.
@@ -333,39 +369,47 @@ flex-flow. This is a shorthand for the flex-direction and flex-wrap properties
 align-content is for multi line flexible boxes, determines the spacing between lines
 
 # Describe types Partial, Record, Omit, Pick.
+```
 interface Point {
-x: number;
-y: number;
+  x: number;
+  y: number;
 }
 let pointPart: Partial<Point> = {}; // `Partial` allows x and y to be optional
 pointPart.x = 10;
+```
 
+```
 const nameAgeMap: Record<string, number> = {
-'Alice': 21,
-'Bob': 25
+  'Alice': 21,
+  'Bob': 25
 };
 Record<string, number> is equivalent to { [key: string]: number }
+```
 
+```
 interface Person {
-name: string;
-age: number;
-location?: string;
+  name: string;
+  age: number;
+  location?: string;
 }
 const bob: Omit<Person, 'age' | 'location'> = {
-name: 'Bob'
-// `Omit` has removed age and location from the type and they can't be defined here
-// `Exclude` removes from type alias, not from Interface
+  name: 'Bob'
+  // `Omit` has removed age and location from the type and they can't be defined here
+  // `Exclude` removes from type alias, not from Interface
 };
 const bob: Pick<Person, 'name'> = {
-name: 'Bob'
-// `Pick` has only kept name, so age and location were removed from the type and they can't be defined here
+  name: 'Bob'
+  // `Pick` has only kept name, so age and location were removed from the type and they can't be defined here
 };
+```
 
 # What is a prototype?
 The prototype is an object that is associated with every functions and objects by default in JavaScript,
 where function's prototype property is accessible and modifiable and object's prototype property (aka attribute) is not visible.
 
 Every function includes prototype object by default.
+
+```
 function Animal (name, energy) {
   // const this = Object.create(Animal.prototype)
   this.name = name
@@ -374,8 +418,10 @@ function Animal (name, energy) {
 }
 // const leo = Animal('Leo', 7) - we use new instead
 const snoop = new Animal('Snoop', 10)
+```
+
 Every object which is created using literal syntax or constructor syntax with the new keyword,
-includes **proto** property that points to prototype object of a function that created this object
+includes ```**proto**``` property that points to prototype object of a function that created this object
 
 # Describe a composition.
 composition (has a) over inheritance (is a)
@@ -383,14 +429,19 @@ https://www.youtube.com/watch?v=rcDsRyVhcxY
 
 # How to access a css variable insde child elemt
 write inside the class element on the child element
+
+```
 .some-class {
   :host-context(.theme-red) & {
     color: green;
   }
 }
+```
 
 and we are adding class="theme-red" on the parrent element
 or we can define a variable inside parrent
+
+```
 :host {
   --some-var
 }
@@ -398,7 +449,7 @@ and then inside child
 .some-class {
   color: var(--some-var);
 }
-
+```
 
 # Describe the following.
 you cannot access any properties on values with the type unknown
@@ -415,6 +466,7 @@ shadowDOM
 
 # How resolve following example and others (leetcode)
 
+```
 function fac(n) {
   if (n==1) {
     return 1
@@ -422,7 +474,9 @@ function fac(n) {
     return n * fac(n-1)
   }
 }
+```
 
+```
 function fac2(n) {
   let res = 1
   for (let i = n; i>=1; i--) {
@@ -430,7 +484,10 @@ function fac2(n) {
   }
   return res
 }
+```
 
+```
 function checkPalindrom (str) {
   return str === str.split('').reverse().join('')
 }
+```
